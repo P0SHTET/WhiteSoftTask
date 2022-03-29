@@ -158,12 +158,19 @@ Console.WriteLine("Быстрая");
 Console.WriteLine($"Количество сравнений - {srav}\nКоличество замен - {zamen}\n");
 
 IDiagnosticSortAlgorithm algorithm = new ShakerSort();
-
+algorithm.SwapTwo += CompareTwo;
 var t = algorithm.Sort(first);
+algorithm.SwapTwo -= CompareTwo;
 
-foreach(var element in t)
+
+foreach (var element in t)
 {
     Console.Write($"{element} ");
 }
 
 Console.WriteLine($"\n\n{algorithm.CompareCount} {algorithm.SwapCount}");
+
+void CompareTwo(int first, int second)
+{
+    Console.WriteLine($"{first} <-> {second}");
+}
