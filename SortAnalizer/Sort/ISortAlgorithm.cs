@@ -1,7 +1,7 @@
 ﻿namespace Sort
 {
-    public interface ISortAlgorithm<T> where T : IComparable
+    public interface ISortAlgorithm
     {
-        public IEnumerable<T> Sort(IEnumerable<T> array);
+        public IList<IComparable> Sort(IList<IComparable> array);        
     }
 }

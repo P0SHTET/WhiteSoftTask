@@ -1,4 +1,7 @@
-﻿int[] first = new int[100];
+﻿using Sort;
+using Sort.Algorithms;
+
+IComparable[] first = new IComparable[100];
 int[] a = new int[100];
 int[] b = new int[100];
 int[] d = new int[100];
@@ -153,3 +156,14 @@ quicksort(e, 0, e.Length - 1);
 
 Console.WriteLine("Быстрая");
 Console.WriteLine($"Количество сравнений - {srav}\nКоличество замен - {zamen}\n");
+
+IDiagnosticSortAlgorithm algorithm = new ShakerSort();
+
+var t = algorithm.Sort(first);
+
+foreach(var element in t)
+{
+    Console.Write($"{element} ");
+}
+
+Console.WriteLine($"\n\n{algorithm.CompareCount} {algorithm.SwapCount}");

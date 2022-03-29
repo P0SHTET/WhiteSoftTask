@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 
 namespace Sort
 {
-    internal interface IDiagnosticSortAlgorithm<T> : ISortAlgorithm<T> where T : IComparable 
+    public interface IDiagnosticSortAlgorithm : ISortAlgorithm
     {
-        delegate (int, int) Compare();
+        delegate void Compare(int first, int second);
         public event Compare CompareTwo;
 
-        delegate (int, int) Swap();
+        delegate void Swap(int first, int second);
         public event Swap SwapTwo;
+
+        public int CompareCount { get;  }
+        public int SwapCount { get;  }
     }
 }

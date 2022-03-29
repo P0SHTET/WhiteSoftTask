@@ -6,21 +6,24 @@ using System.Threading.Tasks;
 
 namespace Sort.Algorithms
 {
-    internal class BubbleSort<T> : IDiagnosticSortAlgorithm<T> where T : IComparable
+    public class BubbleSort : IDiagnosticSortAlgorithm
     {
         public BubbleSort()
         {
+            SetDefault();
         }
 
         public int CompareCount { get ; private set; }
         public int SwapCount { get ; private set; }
 
-        public event IDiagnosticSortAlgorithm<T>.Compare CompareTwo;
-        public event IDiagnosticSortAlgorithm<T>.Swap SwapTwo;
+        public event IDiagnosticSortAlgorithm.Compare CompareTwo;
+        public event IDiagnosticSortAlgorithm.Swap SwapTwo;
 
-        public IEnumerable<T> Sort(IEnumerable<T> array)
+        public IList<IComparable> Sort(IList<IComparable> array)
         {
-            List<T> arrayList = array.ToList();
+            SetDefault();
+
+            List<IComparable> arrayList = array.ToList();
 
             for (int i = 0; i < arrayList.Count; i++)
             {
@@ -42,6 +45,12 @@ namespace Sort.Algorithms
             }
 
             return arrayList;
+        }
+
+        private void SetDefault()
+        {
+            CompareCount = 0;
+            SwapCount = 0;
         }
     }
 }
