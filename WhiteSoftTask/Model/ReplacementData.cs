@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WhiteSoftTask
+namespace WhiteSoftTask.Model
 {
-    public struct Replacement
+    public struct ReplacementData
     {
         public string replacement { get; set; }
         public string? source { get; set; }
